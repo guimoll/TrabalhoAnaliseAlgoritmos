@@ -31,18 +31,18 @@ fun main() {
         deliveryType = Pac
     )
 
-    println("Total price: ${amazonOrder.calculateTotalPrice()}")
-    println("Total weight: ${amazonOrder.calculateProductsPrice()}g")
-    println("PAC delivery price: ${amazonOrder.calculateDeliveryPrice()}")
+    println("Total price: ${amazonOrder.calculateProductsPrice()}")
+    println("Total weight: ${amazonOrder.calculateTotalWeight()}g")
+    println("PAC delivery price: ${amazonOrder.getDeliveryPrice()}")
     println()
 
     println("===== TEST 2: UPGRADE TO SEDEX =====")
 
     amazonOrder.changeDeliveryType(Sedex)
 
-    println("Total price: ${amazonOrder.calculateTotalPrice()}")
-    println("Total weight: ${amazonOrder.calculateProductsPrice()}g")
-    println("Sedex delivery price: ${amazonOrder.calculateDeliveryPrice()}")
+    println("Total price: ${amazonOrder.calculateProductsPrice()}")
+    println("Total weight: ${amazonOrder.calculateTotalWeight()}g")
+    println("Sedex delivery price: ${amazonOrder.getDeliveryPrice()}")
     println()
 
     println("===== TEST 3: ADD PRODUCT AND RECALCULATE (SEDEX) =====")
@@ -50,16 +50,16 @@ fun main() {
     amazonOrder.addProduct(domainDrivenDesign)
     amazonOrder.changeDeliveryType(Sedex)
 
-    println("Total price after adding product: ${amazonOrder.calculateTotalPrice()}")
-    println("Total weight after adding product: ${amazonOrder.calculateProductsPrice()}g")
-    println("Sedex delivery price after adding product: ${amazonOrder.calculateDeliveryPrice()}")
+    println("Total price after adding product: ${amazonOrder.calculateProductsPrice()}")
+    println("Total weight after adding product: ${amazonOrder.calculateTotalWeight()}g")
+    println("Sedex delivery price after adding product: ${amazonOrder.getDeliveryPrice()}")
     println()
 
     println("===== TEST 4: PAC EXCEPTION ABOVE 2KG =====")
 
     try {
         amazonOrder.changeDeliveryType(Pac)
-        println("PAC delivery price: ${amazonOrder.calculateDeliveryPrice()}")
+        println("PAC delivery price: ${amazonOrder.getDeliveryPrice()}")
     } catch (exception: IllegalArgumentException) {
         println("Expected exception: ${exception.message}")
     }
@@ -72,7 +72,7 @@ fun main() {
         deliveryType = PickUp
     )
 
-    println("Total price: ${storePickupOrder.calculateTotalPrice()}")
-    println("Total weight: ${storePickupOrder.calculateProductsPrice()}g")
-    println("Pickup delivery price: ${storePickupOrder.calculateDeliveryPrice()}")
+    println("Total price: ${storePickupOrder.calculateProductsPrice()}")
+    println("Total weight: ${storePickupOrder.calculateTotalWeight()}g")
+    println("Pickup delivery price: ${storePickupOrder.getDeliveryPrice()}")
 }

@@ -10,7 +10,7 @@ object Pac : DeliveryType {
     private val TIER_1_PRICE = BigDecimal("10.00")
     private val TIER_2_PRICE = BigDecimal("15.00")
 
-    override fun calculateDelivery(weight: Int): BigDecimal = when {
+    override fun calculateDeliveryPrice(weight: Int): BigDecimal = when {
         weight <= TIER_1_MAX_WEIGHT -> TIER_1_PRICE
         weight <= TIER_2_MAX_WEIGHT -> TIER_2_PRICE
         else -> throw IllegalArgumentException(

@@ -13,15 +13,15 @@ object Sedex : DeliveryType {
     private val TIER_3_BASE_PRICE = BigDecimal("46.50")
     private val TIER_3_EXTRA_PRICE = BigDecimal("1.50")
 
-    override fun calculateDelivery(weight: Int): BigDecimal {
+    override fun calculateDeliveryPrice(weight: Int): BigDecimal {
         return when {
             weight <= TIER_1_MAX_WEIGHT -> TIER_1_PRICE
             weight <= TIER_2_MAX_WEIGHT -> TIER_2_PRICE
-            else -> calculateTier3Delivery(weight)
+            else -> calculateTier3DeliveryPrice(weight)
         }
     }
 
-    private fun calculateTier3Delivery(weight: Int): BigDecimal {
+    private fun calculateTier3DeliveryPrice(weight: Int): BigDecimal {
         val excessWeight = weight - TIER_2_MAX_WEIGHT
         val excessWeighBlock = (excessWeight + EXTRA_WEIGHT - 1) / EXTRA_WEIGHT
 
