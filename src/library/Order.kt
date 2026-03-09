@@ -17,19 +17,19 @@ class Order(
         products.add(product)
     }
 
-    fun calculateTotalWeight(): Int {
+    fun getTotalWeight(): Int {
         return products.fold(0) { total, product ->
             total + product.weight
         }
     }
 
-    fun calculateProductsPrice(): BigDecimal {
+    fun getProductsPrice(): BigDecimal {
         return products.fold(BigDecimal.ZERO) { total, product ->
             total + product.price
         }
     }
 
     fun getDeliveryPrice(): BigDecimal {
-        return deliveryType.calculateDeliveryPrice(calculateTotalWeight())
+        return deliveryType.calculateDeliveryPrice(getTotalWeight())
     }
 }

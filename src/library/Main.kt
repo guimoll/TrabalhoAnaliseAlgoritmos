@@ -31,8 +31,8 @@ fun main() {
         deliveryType = Pac
     )
 
-    println("Total price: ${amazonOrder.calculateProductsPrice()}")
-    println("Total weight: ${amazonOrder.calculateTotalWeight()}g")
+    println("Total price: ${amazonOrder.getProductsPrice()}")
+    println("Total weight: ${amazonOrder.getTotalWeight()}g")
     println("PAC delivery price: ${amazonOrder.getDeliveryPrice()}")
     println()
 
@@ -40,8 +40,8 @@ fun main() {
 
     amazonOrder.changeDeliveryType(Sedex)
 
-    println("Total price: ${amazonOrder.calculateProductsPrice()}")
-    println("Total weight: ${amazonOrder.calculateTotalWeight()}g")
+    println("Total price: ${amazonOrder.getProductsPrice()}")
+    println("Total weight: ${amazonOrder.getTotalWeight()}g")
     println("Sedex delivery price: ${amazonOrder.getDeliveryPrice()}")
     println()
 
@@ -50,8 +50,8 @@ fun main() {
     amazonOrder.addProduct(domainDrivenDesign)
     amazonOrder.changeDeliveryType(Sedex)
 
-    println("Total price after adding product: ${amazonOrder.calculateProductsPrice()}")
-    println("Total weight after adding product: ${amazonOrder.calculateTotalWeight()}g")
+    println("Total price after adding product: ${amazonOrder.getProductsPrice()}")
+    println("Total weight after adding product: ${amazonOrder.getTotalWeight()}g")
     println("Sedex delivery price after adding product: ${amazonOrder.getDeliveryPrice()}")
     println()
 
@@ -72,7 +72,7 @@ fun main() {
         deliveryType = PickUp
     )
 
-    println("Total price: ${storePickupOrder.calculateProductsPrice()}")
-    println("Total weight: ${storePickupOrder.calculateTotalWeight()}g")
+    println("Total price: ${storePickupOrder.getProductsPrice()}")
+    println("Total weight: ${storePickupOrder.getTotalWeight()}g")
     println("Pickup delivery price: ${storePickupOrder.getDeliveryPrice()}")
 }
