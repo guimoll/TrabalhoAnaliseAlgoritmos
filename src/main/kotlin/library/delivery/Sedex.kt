@@ -23,8 +23,8 @@ object Sedex : DeliveryType {
 
     private fun calculateTier3DeliveryPrice(weight: Int): BigDecimal {
         val excessWeight = weight - TIER_2_MAX_WEIGHT
-        val excessWeighBlock = (excessWeight + EXTRA_WEIGHT - 1) / EXTRA_WEIGHT
+        val excessWeightBlock = (excessWeight + EXTRA_WEIGHT - 1) / EXTRA_WEIGHT
 
-        return TIER_3_BASE_PRICE + (TIER_3_EXTRA_PRICE * excessWeighBlock.toBigDecimal())
+        return TIER_3_BASE_PRICE + (TIER_3_EXTRA_PRICE * excessWeightBlock.toBigDecimal())
     }
 }

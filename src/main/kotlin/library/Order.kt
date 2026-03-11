@@ -9,27 +9,20 @@ class Order(
 ) {
     private val products: MutableList<Product> = products.toMutableList()
 
+    val totalWeight: Int
+        get() = products.sumOf { it.weight }
+
+    val productsPrice: BigDecimal
+        get() = products.fold(BigDecimal.ZERO) { acc, product -> acc + product.price }
+
+    val deliveryPrice: BigDecimal
+        get() = deliveryType.calculateDeliveryPrice(totalWeight)
+
     fun changeDeliveryType(deliveryType: DeliveryType) {
         this.deliveryType = deliveryType
     }
 
     fun addProduct(product: Product) {
         products.add(product)
-    }
-
-    fun getTotalWeight(): Int {
-        return products.fold(0) { total, product ->
-            total + product.weight
-        }
-    }
-
-    fun getProductsPrice(): BigDecimal {
-        return products.fold(BigDecimal.ZERO) { total, product ->
-            total + product.price
-        }
-    }
-
-    fun getDeliveryPrice(): BigDecimal {
-        return deliveryType.calculateDeliveryPrice(getTotalWeight())
     }
 }

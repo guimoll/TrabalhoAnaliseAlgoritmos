@@ -31,18 +31,18 @@ fun main() {
         deliveryType = Pac
     )
 
-    println("Total price: ${amazonOrder.getProductsPrice()}")
-    println("Total weight: ${amazonOrder.getTotalWeight()}g")
-    println("PAC delivery price: ${amazonOrder.getDeliveryPrice()}")
+    println("Products price: ${amazonOrder.productsPrice}")
+    println("Products weight: ${amazonOrder.totalWeight}g")
+    println("PAC delivery price: ${amazonOrder.deliveryPrice}")
     println()
 
     println("===== TEST 2: UPGRADE TO SEDEX =====")
 
     amazonOrder.changeDeliveryType(Sedex)
 
-    println("Total price: ${amazonOrder.getProductsPrice()}")
-    println("Total weight: ${amazonOrder.getTotalWeight()}g")
-    println("Sedex delivery price: ${amazonOrder.getDeliveryPrice()}")
+    println("Products price: ${amazonOrder.productsPrice}")
+    println("Products weight: ${amazonOrder.totalWeight}g")
+    println("Sedex delivery price: ${amazonOrder.deliveryPrice}")
     println()
 
     println("===== TEST 3: ADD PRODUCT AND RECALCULATE (SEDEX) =====")
@@ -50,16 +50,16 @@ fun main() {
     amazonOrder.addProduct(domainDrivenDesign)
     amazonOrder.changeDeliveryType(Sedex)
 
-    println("Total price after adding product: ${amazonOrder.getProductsPrice()}")
-    println("Total weight after adding product: ${amazonOrder.getTotalWeight()}g")
-    println("Sedex delivery price after adding product: ${amazonOrder.getDeliveryPrice()}")
+    println("Products price after adding product: ${amazonOrder.productsPrice}")
+    println("Products weight after adding product: ${amazonOrder.totalWeight}g")
+    println("Sedex delivery price after adding product: ${amazonOrder.deliveryPrice}")
     println()
 
     println("===== TEST 4: PAC EXCEPTION ABOVE 2KG =====")
 
     try {
         amazonOrder.changeDeliveryType(Pac)
-        println("PAC delivery price: ${amazonOrder.getDeliveryPrice()}")
+        println("PAC delivery price: ${amazonOrder.deliveryPrice}")
     } catch (exception: IllegalArgumentException) {
         println("Expected exception: ${exception.message}")
     }
@@ -72,7 +72,7 @@ fun main() {
         deliveryType = PickUp
     )
 
-    println("Total price: ${storePickupOrder.getProductsPrice()}")
-    println("Total weight: ${storePickupOrder.getTotalWeight()}g")
-    println("Pickup delivery price: ${storePickupOrder.getDeliveryPrice()}")
+    println("Products price: ${storePickupOrder.productsPrice}")
+    println("Products weight: ${storePickupOrder.totalWeight}g")
+    println("Pickup delivery price: ${storePickupOrder.deliveryPrice}")
 }

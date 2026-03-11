@@ -9,6 +9,6 @@ data class Product (
 ) {
     init {
         require(weight > 0) { "Weight must be greater than 0" }
-        require(price >= BigDecimal.ZERO) { "Price must be greater than 0" }
+        require(price >= BigDecimal.ZERO) { "Price must be non-negative" }
     }
 }
