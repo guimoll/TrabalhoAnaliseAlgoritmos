@@ -1,5 +1,3 @@
-package library
-
 import library.delivery.Pac
 import library.delivery.PickUp
 import library.delivery.Sedex

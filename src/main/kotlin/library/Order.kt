@@ -1,4 +1,3 @@
-package library
 
 import library.delivery.DeliveryType
 import java.math.BigDecimal
