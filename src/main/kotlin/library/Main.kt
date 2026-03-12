@@ -1,3 +1,5 @@
+package library
+
 import library.delivery.Pac
 import library.delivery.PickUp
 import library.delivery.Sedex
@@ -22,55 +24,54 @@ fun main() {
         weight = 850
     )
 
-    println("===== TEST 1: AMAZON ORDER WITH PAC =====")
+    println("===== TEST 1: ORDER WITH PAC =====")
 
-    val amazonOrder = Order(
+    val order = Order(
         products = listOf(cleanCode, refactoring),
         deliveryType = Pac
     )
 
-    println("Products price: ${amazonOrder.productsPrice}")
-    println("Products weight: ${amazonOrder.totalWeight}g")
-    println("PAC delivery price: ${amazonOrder.deliveryPrice}")
+    println("Products price: ${order.getProductsPrice()}")
+    println("Products weight: ${order.getTotalWeight()}g")
+    println("PAC delivery price: ${order.getDeliveryPrice()}")
     println()
 
-    println("===== TEST 2: UPGRADE TO SEDEX =====")
+    println("===== TEST 2: CHANGE DELIVERY TYPE TO SEDEX =====")
 
-    amazonOrder.changeDeliveryType(Sedex)
+    order.changeDeliveryType(Sedex)
 
-    println("Products price: ${amazonOrder.productsPrice}")
-    println("Products weight: ${amazonOrder.totalWeight}g")
-    println("Sedex delivery price: ${amazonOrder.deliveryPrice}")
+    println("Products price: ${order.getProductsPrice()}")
+    println("Products weight: ${order.getTotalWeight()}g")
+    println("Sedex delivery price: ${order.getDeliveryPrice()}")
     println()
 
-    println("===== TEST 3: ADD PRODUCT AND RECALCULATE (SEDEX) =====")
+    println("===== TEST 3: ADD PRODUCT AND RECALCULATE =====")
 
-    amazonOrder.addProduct(domainDrivenDesign)
-    amazonOrder.changeDeliveryType(Sedex)
+    order.addProduct(domainDrivenDesign)
 
-    println("Products price after adding product: ${amazonOrder.productsPrice}")
-    println("Products weight after adding product: ${amazonOrder.totalWeight}g")
-    println("Sedex delivery price after adding product: ${amazonOrder.deliveryPrice}")
+    println("Products price after adding product: ${order.getProductsPrice()}")
+    println("Products weight after adding product: ${order.getTotalWeight()}g")
+    println("Sedex delivery price after adding product: ${order.getDeliveryPrice()}")
     println()
 
     println("===== TEST 4: PAC EXCEPTION ABOVE 2KG =====")
 
     try {
-        amazonOrder.changeDeliveryType(Pac)
-        println("PAC delivery price: ${amazonOrder.deliveryPrice}")
+        order.changeDeliveryType(Pac)
+        println("PAC delivery price: ${order.getDeliveryPrice()}")
     } catch (exception: IllegalArgumentException) {
         println("Expected exception: ${exception.message}")
     }
+
     println()
+    println("===== TEST 5: ORDER WITH PICKUP =====")
 
-    println("===== TEST 5: IN-STORE PICKUP - NO SHIPPING COST =====")
-
-    val storePickupOrder = Order(
+    val pickupOrder = Order(
         products = listOf(cleanCode),
         deliveryType = PickUp
     )
 
-    println("Products price: ${storePickupOrder.productsPrice}")
-    println("Products weight: ${storePickupOrder.totalWeight}g")
-    println("Pickup delivery price: ${storePickupOrder.deliveryPrice}")
+    println("Products price: ${pickupOrder.getProductsPrice()}")
+    println("Products weight: ${pickupOrder.getTotalWeight()}g")
+    println("Pickup delivery price: ${pickupOrder.getDeliveryPrice()}")
 }

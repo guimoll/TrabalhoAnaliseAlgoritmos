@@ -1,3 +1,5 @@
+package library
+
 import java.math.BigDecimal
 
 data class Product (

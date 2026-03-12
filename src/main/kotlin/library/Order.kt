@@ -1,4 +1,4 @@
-
+package library
 import library.delivery.DeliveryType
 import java.math.BigDecimal
 
@@ -8,14 +8,19 @@ class Order(
 ) {
     private val products: MutableList<Product> = products.toMutableList()
 
-    val totalWeight: Int
-        get() = products.sumOf { it.weight }
+    fun getTotalWeight(): Int {
+        return products.sumOf { it.weight }
+    }
 
-    val productsPrice: BigDecimal
-        get() = products.fold(BigDecimal.ZERO) { acc, product -> acc + product.price }
+    fun getProductsPrice(): BigDecimal {
+        return products.fold(BigDecimal.ZERO) { acc, product ->
+            acc + product.price
+        }
+    }
 
-    val deliveryPrice: BigDecimal
-        get() = deliveryType.calculateDeliveryPrice(totalWeight)
+    fun getDeliveryPrice(): BigDecimal {
+        return deliveryType.calculateDeliveryPrice(getTotalWeight())
+    }
 
     fun changeDeliveryType(deliveryType: DeliveryType) {
         this.deliveryType = deliveryType
