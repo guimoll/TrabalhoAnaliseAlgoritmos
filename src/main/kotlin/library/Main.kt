@@ -34,6 +34,7 @@ fun main() {
     println("Products price: ${order.getProductsPrice()}")
     println("Products weight: ${order.getTotalWeight()}g")
     println("PAC delivery price: ${order.getDeliveryPrice()}")
+    println("Total price (products + delivery): ${order.getTotalPrice()}")
     println()
 
     println("===== TEST 2: CHANGE DELIVERY TYPE TO SEDEX =====")
@@ -43,6 +44,7 @@ fun main() {
     println("Products price: ${order.getProductsPrice()}")
     println("Products weight: ${order.getTotalWeight()}g")
     println("Sedex delivery price: ${order.getDeliveryPrice()}")
+    println("Total price (products + delivery): ${order.getTotalPrice()}")
     println()
 
     println("===== TEST 3: ADD PRODUCT AND RECALCULATE =====")
@@ -52,6 +54,7 @@ fun main() {
     println("Products price after adding product: ${order.getProductsPrice()}")
     println("Products weight after adding product: ${order.getTotalWeight()}g")
     println("Sedex delivery price after adding product: ${order.getDeliveryPrice()}")
+    println("Total price (products + delivery): ${order.getTotalPrice()}")
     println()
 
     println("===== TEST 4: PAC EXCEPTION ABOVE 2KG =====")
@@ -59,6 +62,7 @@ fun main() {
     try {
         order.changeDeliveryType(Pac)
         println("PAC delivery price: ${order.getDeliveryPrice()}")
+        println("Total price (products + delivery): ${order.getTotalPrice()}")
     } catch (exception: IllegalArgumentException) {
         println("Expected exception: ${exception.message}")
     }
@@ -74,4 +78,5 @@ fun main() {
     println("Products price: ${pickupOrder.getProductsPrice()}")
     println("Products weight: ${pickupOrder.getTotalWeight()}g")
     println("Pickup delivery price: ${pickupOrder.getDeliveryPrice()}")
+    println("Total price (products + delivery): ${pickupOrder.getTotalPrice()}")
 }

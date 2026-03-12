@@ -22,6 +22,10 @@ class Order(
         return deliveryType.calculateDeliveryPrice(getTotalWeight())
     }
 
+    fun getTotalPrice(): BigDecimal {
+        return getProductsPrice() + getDeliveryPrice()
+    }
+
     fun changeDeliveryType(deliveryType: DeliveryType) {
         this.deliveryType = deliveryType
     }

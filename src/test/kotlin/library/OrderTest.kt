@@ -76,4 +76,11 @@ class OrderTest {
         assertEquals(BigDecimal.ZERO, order.getProductsPrice())
         assertEquals(BigDecimal.ZERO, order.getDeliveryPrice())
     }
+
+    @Test
+    fun testTotalPrice() {
+        val order = Order(products = listOf(lightProduct, heavyProduct), deliveryType = paidDelivery)
+
+        assertEquals(BigDecimal("135.00"), order.getTotalPrice())
+    }
 }
