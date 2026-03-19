@@ -12,8 +12,8 @@ object NotificationService {
 
     fun orderScheduled(conditionalOrder: ConditionalOrder, symbol: String) {
         println(
-            "[ORDER SCHEDULED] ${conditionalOrder.investor.name} scheduled a ${conditionalOrder.orderType} " +
-                    "order for $symbol at R$${conditionalOrder.orderPrice} " +
+            "[ORDER SCHEDULED] ${conditionalOrder.investor.name} scheduled a ${conditionalOrder.type} " +
+                    "order for $symbol at R$${conditionalOrder.price} " +
                     "when price ${conditionalOrder.triggerType} R$${conditionalOrder.triggerPrice}"
         )
     }
@@ -21,7 +21,7 @@ object NotificationService {
     fun conditionalTriggered(conditionalOrder: ConditionalOrder, symbol: String) {
         println(
             "[CONDITIONAL TRIGGERED] ${conditionalOrder.investor.name}'s conditional order was activated: " +
-                    "${conditionalOrder.orderType} $symbol at R$${conditionalOrder.orderPrice} " +
+                    "${conditionalOrder.type} $symbol at R$${conditionalOrder.price} " +
                     "(trigger: price ${conditionalOrder.triggerType} R$${conditionalOrder.triggerPrice})"
         )
     }

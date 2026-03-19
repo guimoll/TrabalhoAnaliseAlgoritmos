@@ -3,7 +3,7 @@ package stockexchange.exchange
 import stockexchange.order.Order
 import stockexchange.order.OrderBook
 
-class TradeMatcher {
+object TradeMatcher {
 
     fun findMatch(orderBook: OrderBook): Pair<Order, Order>? {
         val sellOrders = orderBook.sellOrders

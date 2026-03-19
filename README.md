@@ -6,3 +6,7 @@
 # Library Diagram
 
 ![Library UML Diagram](libraryDiagram.png)
+
+# Stock Exchange Diagram
+
+![Stock Exchange Diagram](stockExchangeDiagram.svg)

@@ -5,12 +5,13 @@ import stockexchange.trigger.PriceTriggerType
 import java.math.BigDecimal
 
 data class ConditionalOrder(
-    val investor: Investor,
-    val orderType: OrderType,
-    val orderPrice: BigDecimal,
+    override val investor: Investor,
+    override val type: OrderType,
+    override val price: BigDecimal,
     val triggerPrice: BigDecimal,
     val triggerType: PriceTriggerType
-) {
+) : OrderRequest {
+
     fun shouldTrigger(currentPrice: BigDecimal): Boolean {
         return when (triggerType) {
             PriceTriggerType.GREATER_OR_EQUAL -> currentPrice >= triggerPrice
@@ -21,8 +22,8 @@ data class ConditionalOrder(
     fun createOrder(): Order {
         return Order(
             investor = investor,
-            type = orderType,
-            price = orderPrice
+            type = type,
+            price = price
         )
     }
 }

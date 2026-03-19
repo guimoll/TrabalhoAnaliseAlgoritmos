@@ -3,7 +3,6 @@ package stockexchange.order
 import stockexchange.investor.Investor
 import stockexchange.notification.NotificationService
 import stockexchange.stock.Stock
-import stockexchange.order.ConditionalOrder
 import stockexchange.trigger.PriceTriggerListener
 import java.math.BigDecimal
 
@@ -21,10 +20,12 @@ class OrderBook(
         get() = stock.currentOrders.filter { it.type == OrderType.SELL }
 
     fun placeBuyOrder(investor: Investor, price: BigDecimal) {
+        require(price > BigDecimal.ZERO) { "Order price must be greater than 0" }
         addOrder(Order(investor = investor, type = OrderType.BUY, price = price))
     }
 
     fun placeSellOrder(investor: Investor, price: BigDecimal) {
+        require(price > BigDecimal.ZERO) { "Order price must be greater than 0" }
         addOrder(Order(investor = investor, type = OrderType.SELL, price = price))
     }
 
