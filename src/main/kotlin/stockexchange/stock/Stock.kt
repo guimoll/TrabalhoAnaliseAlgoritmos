@@ -1,5 +1,6 @@
 package stockexchange.stock
 
+import stockexchange.notification.NotificationService
 import stockexchange.order.Order
 import java.math.BigDecimal
 
@@ -37,10 +38,16 @@ class Stock(
 
     override fun attach(observer: StockObserver) {
         observers.add(observer)
+        if (observer is stockexchange.investor.Investor) {
+            NotificationService.subscribed(observer.name, symbol, currentPrice)
+        }
     }
 
     override fun detach(observer: StockObserver) {
         observers.remove(observer)
+        if (observer is stockexchange.investor.Investor) {
+            NotificationService.unsubscribed(observer.name, symbol)
+        }
     }
 
     private fun notifyAllObservers() {

@@ -1,8 +1,7 @@
-package stockexchange.trigger
+package stockexchange.order
 
 import stockexchange.investor.Investor
-import stockexchange.order.Order
-import stockexchange.order.OrderType
+import stockexchange.trigger.PriceTriggerType
 import java.math.BigDecimal
 
 data class ConditionalOrder(

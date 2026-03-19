@@ -1,5 +1,7 @@
 package stockexchange.trigger
 
+import stockexchange.notification.NotificationService
+import stockexchange.order.ConditionalOrder
 import stockexchange.order.OrderBook
 import stockexchange.stock.Stock
 import stockexchange.stock.StockObserver
@@ -22,6 +24,7 @@ class PriceTriggerListener(
         while (iterator.hasNext()) {
             val conditionalOrder = iterator.next()
             if (conditionalOrder.shouldTrigger(stock.currentPrice)) {
+                NotificationService.conditionalTriggered(conditionalOrder, stock.symbol)
                 orderBook.addOrder(conditionalOrder.createOrder())
                 iterator.remove()
             }

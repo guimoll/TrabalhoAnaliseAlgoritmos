@@ -1,8 +1,9 @@
 package stockexchange.order
 
 import stockexchange.investor.Investor
+import stockexchange.notification.NotificationService
 import stockexchange.stock.Stock
-import stockexchange.trigger.ConditionalOrder
+import stockexchange.order.ConditionalOrder
 import stockexchange.trigger.PriceTriggerListener
 import java.math.BigDecimal
 
@@ -28,10 +29,12 @@ class OrderBook(
     }
 
     fun scheduleConditionalOrder(conditionalOrder: ConditionalOrder) {
+        NotificationService.orderScheduled(conditionalOrder, stock.symbol)
         priceTriggerObserver.scheduleOrder(conditionalOrder)
     }
 
     fun addOrder(order: Order) {
+        NotificationService.orderPlaced(order, stock.symbol)
         stock.addOrder(order)
     }
 

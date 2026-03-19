@@ -1,5 +1,6 @@
 package stockexchange.investor
 
+import stockexchange.notification.NotificationService
 import stockexchange.stock.Stock
 import stockexchange.stock.StockObserver
 
@@ -11,6 +12,6 @@ data class Investor(
     }
 
     override fun update(stock: Stock) {
-        println("$name received an update: ${stock.symbol} is now ${stock.currentPrice}")
+        NotificationService.priceUpdated(name, stock.symbol, stock.currentPrice)
     }
 }
