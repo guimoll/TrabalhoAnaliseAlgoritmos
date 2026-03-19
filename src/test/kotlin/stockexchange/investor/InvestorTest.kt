@@ -10,6 +10,7 @@ import java.math.BigDecimal
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertNotSame
 
 class InvestorTest {
 
@@ -49,9 +50,9 @@ class InvestorTest {
     }
 
     @Test
-    fun testInvestorsWithSameNameAreEqual() {
+    fun testInvestorsWithSameNameAreNotEqual() {
         val a = Investor("Mariana")
         val b = Investor("Mariana")
-        assertEquals(a, b)
+        assertNotSame(a, b)
     }
 }
