@@ -1,6 +1,6 @@
 package stockexchange.order
 
-import stockexchange.Investor
+import stockexchange.investor.Investor
 import java.math.BigDecimal
 
 data class Order(

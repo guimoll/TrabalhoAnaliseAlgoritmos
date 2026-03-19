@@ -1,6 +1,7 @@
-package stockexchange
+package stockexchange.exchange
 
 import stockexchange.order.Order
+import stockexchange.order.OrderBook
 
 class TradeMatcher {
 
