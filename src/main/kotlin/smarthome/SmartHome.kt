@@ -72,4 +72,17 @@ class SmartHome(
     fun definirTemperaturaArCondicionados(temperature: Int) {
         airConditioners.forEach { airConditioner -> airConditioner.definirTemperatura(temperature) }
     }
+
+    fun modoSono() {
+        desligarArCondicionados()
+        desligarLampadas()
+        fecharPersianas()
+    }
+
+    fun modoTrabalho() {
+        ligarLampadas()
+        ligarArCondicionados()
+        definirTemperaturaArCondicionados(25)
+        abrirPersianas()
+    }
 }

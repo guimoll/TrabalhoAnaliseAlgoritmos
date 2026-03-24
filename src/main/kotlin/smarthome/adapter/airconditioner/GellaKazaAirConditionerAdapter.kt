@@ -6,8 +6,10 @@ import smarthome.device.AirConditioner
 class GellaKazaAirConditionerAdapter(
     private val airConditioner: ArCondicionadoGellaKaza
 ) : AirConditioner {
+
     override fun ligar() {
         airConditioner.ativar()
+        definirTemperatura(DEFAULT_TEMPERATURE)
     }
 
     override fun desligar() {
@@ -40,3 +42,5 @@ class GellaKazaAirConditionerAdapter(
         return airConditioner.estaLigado()
     }
 }
+
+private const val DEFAULT_TEMPERATURE = 28

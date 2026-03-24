@@ -10,6 +10,7 @@ class VentoBaumnAirConditionerAdapter(
 
     override fun ligar() {
         airConditioner.ligar()
+        airConditioner.definirTemperatura(DEFAULT_TEMPERATURE)
         turnedOn = true
     }
 
@@ -36,5 +37,9 @@ class VentoBaumnAirConditionerAdapter(
 
     override fun isOn(): Boolean {
         return turnedOn
+    }
+
+    companion object {
+        private const val DEFAULT_TEMPERATURE = 24
     }
 }
