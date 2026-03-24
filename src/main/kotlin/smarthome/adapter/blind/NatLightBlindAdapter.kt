@@ -6,41 +6,43 @@ import smarthome.device.Blind
 class NatLightBlindAdapter(
     private val blind: PersianaNatLight
 ) : Blind {
-    override fun abrir() {
-        ensureSlatsAreOpen()
-        raiseBlindIfNeeded()
+    fun descerPalhetas() {
+        blind.descerPalheta()
     }
 
-    override fun fechar() {
-        lowerBlindIfNeeded()
-        closeSlatsIfNeeded()
-    }
-
-    override fun isOpen(): Boolean {
-        return blind.estaPalhetaAberta() && blind.estaPalhetaErguida()
-    }
-
-    private fun ensureSlatsAreOpen() {
-        if (!blind.estaPalhetaAberta()) {
-            blind.abrirPalheta()
-        }
-    }
-
-    private fun raiseBlindIfNeeded() {
+    fun subirPalhetas() {
+        require(blind.estaPalhetaAberta()) { "Nao e possivel subir a palheta com as palhetas fechadas" }
         if (!blind.estaPalhetaErguida()) {
             blind.subirPalheta()
         }
     }
 
-    private fun lowerBlindIfNeeded() {
-        if (blind.estaPalhetaErguida()) {
-            blind.descerPalheta()
+    fun abrirPalhetas() {
+        if (!blind.estaPalhetaAberta()) {
+            blind.abrirPalheta()
         }
     }
 
-    private fun closeSlatsIfNeeded() {
+    fun fecharPalhetas() {
+        require(!blind.estaPalhetaErguida()) { "Nao e possivel fechar a palheta com a persiana erguida" }
         if (blind.estaPalhetaAberta()) {
             blind.fecharPalheta()
         }
+    }
+
+    override fun abrir() {
+        abrirPalhetas()
+        subirPalhetas()
+    }
+
+    override fun fechar() {
+        if (blind.estaPalhetaErguida()) {
+            descerPalhetas()
+        }
+        fecharPalhetas()
+    }
+
+    override fun isOpen(): Boolean {
+        return blind.estaPalhetaAberta() && blind.estaPalhetaErguida()
     }
 }

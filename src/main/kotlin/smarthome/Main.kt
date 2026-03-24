@@ -30,6 +30,28 @@ fun main() {
     smartHome.abrirPersianas()
     smartHome.ligarArCondicionados()
 
+    phellipesLamp.setIntensidade(1)
+    println("Phellipes ligada com intensidade 1: ${phellipesLamp.isOn()}")
+    phellipesLamp.setIntensidade(4)
+    println("Phellipes ligada com intensidade 4: ${phellipesLamp.isOn()}")
+    phellipesLamp.setIntensidade(99)
+    println("Phellipes ligada com intensidade 99: ${phellipesLamp.isOn()}")
+
+    solariusBlind.descerPersiana()
+    println("Solarius aberta apos descerPersiana: ${solariusBlind.isOpen()}")
+    solariusBlind.subirPersiana()
+    println("Solarius aberta apos subirPersiana: ${solariusBlind.isOpen()}")
+
+    natLightBlind.abrirPalhetas()
+    println("NatLight aberta apos abrirPalheta: ${natLightBlind.isOpen()}")
+    natLightBlind.subirPalhetas()
+    println("NatLight aberta apos subirPalheta: ${natLightBlind.isOpen()}")
+    natLightBlind.descerPalhetas()
+    println("NatLight aberta apos descerPalheta: ${natLightBlind.isOpen()}")
+    natLightBlind.fecharPalhetas()
+    println("NatLight aberta apos fecharPalheta: ${natLightBlind.isOpen()}")
+    natLightBlind.abrir()
+
     println("ShoyuMi lamp on: ${shoyuMiLamp.isOn()}")
     println("Phellipes lamp on: ${phellipesLamp.isOn()}")
     println("Solarius blind open: ${solariusBlind.isOpen()}")

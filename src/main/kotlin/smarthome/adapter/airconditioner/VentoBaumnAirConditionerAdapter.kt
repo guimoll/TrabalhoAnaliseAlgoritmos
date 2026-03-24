@@ -6,17 +6,17 @@ import smarthome.device.AirConditioner
 class VentoBaumnAirConditionerAdapter(
     private val airConditioner: ArCondicionadoVentoBaumn
 ) : AirConditioner {
-    private var turnedOn = false
+    private var ligado = false
 
     override fun ligar() {
         airConditioner.ligar()
         airConditioner.definirTemperatura(DEFAULT_TEMPERATURE)
-        turnedOn = true
+        ligado = true
     }
 
     override fun desligar() {
         airConditioner.desligar()
-        turnedOn = false
+        ligado = false
     }
 
     override fun aumentarTemperatura() {
@@ -32,11 +32,11 @@ class VentoBaumnAirConditionerAdapter(
     }
 
     override fun getTemperature(): Int {
-        return airConditioner.getTemperatura()
+        return airConditioner.temperatura
     }
 
     override fun isOn(): Boolean {
-        return turnedOn
+        return ligado
     }
 
     companion object {
