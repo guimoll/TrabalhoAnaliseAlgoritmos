@@ -26,12 +26,12 @@ fun main() {
         airConditioners = listOf(ventoBaumnAirConditioner, gellaKazaAirConditioner)
     )
 
-    smartHome.turnOnLights()
-    smartHome.openBlinds()
-    smartHome.turnOnAirConditioners()
-    smartHome.setAirConditionerTemperature(25)
-    smartHome.increaseAirConditionerTemperature()
-    smartHome.decreaseAirConditionerTemperature()
+    smartHome.ligarLampadas()
+    smartHome.abrirPersianas()
+    smartHome.ligarArCondicionados()
+    smartHome.definirTemperaturaArCondicionados(25)
+    smartHome.aumentarTemperaturaArCondicionados()
+    smartHome.diminuirTemperaturaArCondicionados()
 
     println("ShoyuMi lamp on: ${shoyuMiLamp.isOn()}")
     println("Phellipes lamp on: ${phellipesLamp.isOn()}")
@@ -42,9 +42,9 @@ fun main() {
     println("VentoBaumn temperature: ${ventoBaumnAirConditioner.getTemperature()}")
     println("GellaKaza temperature: ${gellaKazaAirConditioner.getTemperature()}")
 
-    smartHome.turnOffLights()
-    smartHome.closeBlinds()
-    smartHome.turnOffAirConditioners()
+    smartHome.desligarLampadas()
+    smartHome.fecharPersianas()
+    smartHome.desligarArCondicionados()
 
     println("ShoyuMi lamp on after shutdown: ${shoyuMiLamp.isOn()}")
     println("Phellipes lamp on after shutdown: ${phellipesLamp.isOn()}")

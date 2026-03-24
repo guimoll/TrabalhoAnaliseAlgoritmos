@@ -37,39 +37,39 @@ class SmartHome(
         return airConditioners.toList()
     }
 
-    fun turnOnLights() {
-        lamps.forEach { lamp -> lamp.turnOn() }
+    fun ligarLampadas() {
+        lamps.forEach { lamp -> lamp.ligar() }
     }
 
-    fun turnOffLights() {
-        lamps.forEach { lamp -> lamp.turnOff() }
+    fun desligarLampadas() {
+        lamps.forEach { lamp -> lamp.desligar() }
     }
 
-    fun openBlinds() {
-        blinds.forEach { blind -> blind.open() }
+    fun abrirPersianas() {
+        blinds.forEach { blind -> blind.abrir() }
     }
 
-    fun closeBlinds() {
-        blinds.forEach { blind -> blind.close() }
+    fun fecharPersianas() {
+        blinds.forEach { blind -> blind.fechar() }
     }
 
-    fun turnOnAirConditioners() {
-        airConditioners.forEach { airConditioner -> airConditioner.turnOn() }
+    fun ligarArCondicionados() {
+        airConditioners.forEach { airConditioner -> airConditioner.ligar() }
     }
 
-    fun turnOffAirConditioners() {
-        airConditioners.forEach { airConditioner -> airConditioner.turnOff() }
+    fun desligarArCondicionados() {
+        airConditioners.forEach { airConditioner -> airConditioner.desligar() }
     }
 
-    fun increaseAirConditionerTemperature() {
-        airConditioners.forEach { airConditioner -> airConditioner.increaseTemperature() }
+    fun aumentarTemperaturaArCondicionados() {
+        airConditioners.forEach { airConditioner -> airConditioner.aumentarTemperatura() }
     }
 
-    fun decreaseAirConditionerTemperature() {
-        airConditioners.forEach { airConditioner -> airConditioner.decreaseTemperature() }
+    fun diminuirTemperaturaArCondicionados() {
+        airConditioners.forEach { airConditioner -> airConditioner.diminuirTemperatura() }
     }
 
-    fun setAirConditionerTemperature(temperature: Int) {
-        airConditioners.forEach { airConditioner -> airConditioner.setTemperature(temperature) }
+    fun definirTemperaturaArCondicionados(temperature: Int) {
+        airConditioners.forEach { airConditioner -> airConditioner.definirTemperatura(temperature) }
     }
 }

@@ -6,11 +6,11 @@ import smarthome.device.Lamp
 class ShoyuMiLampAdapter(
     private val lamp: LampadaShoyuMi
 ) : Lamp {
-    override fun turnOn() {
+    override fun ligar() {
         lamp.ligar()
     }
 
-    override fun turnOff() {
+    override fun desligar() {
         lamp.desligar()
     }
 

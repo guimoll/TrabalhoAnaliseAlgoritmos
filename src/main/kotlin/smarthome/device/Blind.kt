@@ -1,9 +1,9 @@
 package smarthome.device
 
 interface Blind {
-    fun open()
+    fun abrir()
 
-    fun close()
+    fun fechar()
 
     fun isOpen(): Boolean
 }

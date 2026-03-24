@@ -6,12 +6,12 @@ import smarthome.device.Blind
 class NatLightBlindAdapter(
     private val blind: PersianaNatLight
 ) : Blind {
-    override fun open() {
-        ensurePalhetasAreOpen()
+    override fun abrir() {
+        ensureSlatsAreOpen()
         raiseBlindIfNeeded()
     }
 
-    override fun close() {
+    override fun fechar() {
         lowerBlindIfNeeded()
         closeSlatsIfNeeded()
     }
@@ -20,7 +20,7 @@ class NatLightBlindAdapter(
         return blind.estaPalhetaAberta() && blind.estaPalhetaErguida()
     }
 
-    private fun ensurePalhetasAreOpen() {
+    private fun ensureSlatsAreOpen() {
         if (!blind.estaPalhetaAberta()) {
             blind.abrirPalheta()
         }

@@ -6,16 +6,16 @@ import smarthome.device.Lamp
 class PhellipesLampAdapter(
     private val lamp: LampadaPhellipes
 ) : Lamp {
-    override fun turnOn() {
-        lamp.setIntensidade(MAX_INTENSITY)
+    override fun ligar() {
+        lamp.intensidade = MAX_INTENSITY
     }
 
-    override fun turnOff() {
-        lamp.setIntensidade(MIN_INTENSITY)
+    override fun desligar() {
+        lamp.intensidade = MIN_INTENSITY
     }
 
     override fun isOn(): Boolean {
-        return lamp.getIntensidade() > MIN_INTENSITY
+        return lamp.intensidade > MIN_INTENSITY
     }
 
     companion object {

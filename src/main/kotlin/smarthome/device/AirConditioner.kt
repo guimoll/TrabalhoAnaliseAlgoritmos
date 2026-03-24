@@ -1,15 +1,15 @@
 package smarthome.device
 
 interface AirConditioner {
-    fun turnOn()
+    fun ligar()
 
-    fun turnOff()
+    fun desligar()
 
-    fun increaseTemperature()
+    fun aumentarTemperatura()
 
-    fun decreaseTemperature()
+    fun diminuirTemperatura()
 
-    fun setTemperature(temperature: Int)
+    fun definirTemperatura(temperature: Int)
 
     fun getTemperature(): Int
 

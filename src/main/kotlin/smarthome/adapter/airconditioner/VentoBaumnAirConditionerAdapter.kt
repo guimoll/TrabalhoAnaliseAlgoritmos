@@ -8,25 +8,25 @@ class VentoBaumnAirConditionerAdapter(
 ) : AirConditioner {
     private var turnedOn = false
 
-    override fun turnOn() {
+    override fun ligar() {
         airConditioner.ligar()
         turnedOn = true
     }
 
-    override fun turnOff() {
+    override fun desligar() {
         airConditioner.desligar()
         turnedOn = false
     }
 
-    override fun increaseTemperature() {
-        setTemperature(getTemperature() + 1)
+    override fun aumentarTemperatura() {
+        definirTemperatura(getTemperature() + 1)
     }
 
-    override fun decreaseTemperature() {
-        setTemperature(getTemperature() - 1)
+    override fun diminuirTemperatura() {
+        definirTemperatura(getTemperature() - 1)
     }
 
-    override fun setTemperature(temperature: Int) {
+    override fun definirTemperatura(temperature: Int) {
         airConditioner.definirTemperatura(temperature)
     }
 

@@ -1,9 +1,9 @@
 package smarthome.device
 
 interface Lamp {
-    fun turnOn()
+    fun ligar()
 
-    fun turnOff()
+    fun desligar()
 
     fun isOn(): Boolean
 }

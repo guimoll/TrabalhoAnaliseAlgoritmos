@@ -6,29 +6,29 @@ import smarthome.device.AirConditioner
 class GellaKazaAirConditionerAdapter(
     private val airConditioner: ArCondicionadoGellaKaza
 ) : AirConditioner {
-    override fun turnOn() {
+    override fun ligar() {
         airConditioner.ativar()
     }
 
-    override fun turnOff() {
+    override fun desligar() {
         airConditioner.desativar()
     }
 
-    override fun increaseTemperature() {
+    override fun aumentarTemperatura() {
         airConditioner.aumentarTemperatura()
     }
 
-    override fun decreaseTemperature() {
+    override fun diminuirTemperatura() {
         airConditioner.diminuirTemperatura()
     }
 
-    override fun setTemperature(temperature: Int) {
+    override fun definirTemperatura(temperature: Int) {
         while (getTemperature() < temperature) {
-            increaseTemperature()
+            aumentarTemperatura()
         }
 
         while (getTemperature() > temperature) {
-            decreaseTemperature()
+            diminuirTemperatura()
         }
     }
 
