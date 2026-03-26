@@ -62,6 +62,67 @@
                     <mainClass>MainKt</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>library-jar</id>
+                        <phase>package</phase>
+                        <goals><goal>single</goal></goals>
+                        <configuration>
+                            <finalName>library</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <outputDirectory>${project.basedir}</outputDirectory>
+                            <archive>
+                                <manifest>
+                                    <mainClass>library.MainKt</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stockexchange-jar</id>
+                        <phase>package</phase>
+                        <goals><goal>single</goal></goals>
+                        <configuration>
+                            <finalName>stockexchange</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <outputDirectory>${project.basedir}</outputDirectory>
+                            <archive>
+                                <manifest>
+                                    <mainClass>stockexchange.MainKt</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>smarthome-jar</id>
+                        <phase>package</phase>
+                        <goals><goal>single</goal></goals>
+                        <configuration>
+                            <finalName>smarthome</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <outputDirectory>${project.basedir}</outputDirectory>
+                            <archive>
+                                <manifest>
+                                    <mainClass>smarthome.MainKt</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -89,6 +150,12 @@
             <version>1.14.9</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>br.furb.analise.algoritmos</groupId>
+            <artifactId>LibDispositivosIot</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
