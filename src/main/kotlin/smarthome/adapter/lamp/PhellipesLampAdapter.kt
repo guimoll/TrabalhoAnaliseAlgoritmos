@@ -8,6 +8,9 @@ class PhellipesLampAdapter(
 ) : Lamp {
 
     fun definirIntensidade(intensidade: Int) {
+        require(intensidade in MIN_INTENSITY..MAX_INTENSITY) {
+            "O valor da intensidade deve ser entre 0 e 100"
+        }
         lamp.intensidade = intensidade
     }
 
@@ -19,7 +22,7 @@ class PhellipesLampAdapter(
         definirIntensidade(MIN_INTENSITY)
     }
 
-    override fun isOn(): Boolean {
+    override fun estaLigada(): Boolean {
         return lamp.intensidade > MIN_INTENSITY
     }
 

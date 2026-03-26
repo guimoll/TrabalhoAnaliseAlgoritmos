@@ -43,9 +43,9 @@ class SmartHomeTest {
         sourceBlinds.add(blind2)
         sourceAirConditioners.add(airConditioner2)
 
-        assertEquals(listOf(lamp1), smartHome.getLamps())
-        assertEquals(listOf(blind1), smartHome.getBlinds())
-        assertEquals(listOf(airConditioner1), smartHome.getAirConditioners())
+        assertEquals(listOf(lamp1), smartHome.lamps)
+        assertEquals(listOf(blind1), smartHome.blinds)
+        assertEquals(listOf(airConditioner1), smartHome.airConditioners)
     }
 
     @Test
@@ -56,21 +56,21 @@ class SmartHomeTest {
         smartHome.addBlind(blind1)
         smartHome.addAirConditioner(airConditioner1)
 
-        assertEquals(listOf(lamp1), smartHome.getLamps())
-        assertEquals(listOf(blind1), smartHome.getBlinds())
-        assertEquals(listOf(airConditioner1), smartHome.getAirConditioners())
+        assertEquals(listOf(lamp1), smartHome.lamps)
+        assertEquals(listOf(blind1), smartHome.blinds)
+        assertEquals(listOf(airConditioner1), smartHome.airConditioners)
     }
 
     @Test
-    fun testGettersReturnCopies() {
+    fun testPropertiesReturnCopies() {
         val smartHome = SmartHome(listOf(lamp1), listOf(blind1), listOf(airConditioner1))
 
-        val firstLampSnapshot = smartHome.getLamps()
-        val secondLampSnapshot = smartHome.getLamps()
-        val firstBlindSnapshot = smartHome.getBlinds()
-        val secondBlindSnapshot = smartHome.getBlinds()
-        val firstAirConditionerSnapshot = smartHome.getAirConditioners()
-        val secondAirConditionerSnapshot = smartHome.getAirConditioners()
+        val firstLampSnapshot = smartHome.lamps
+        val secondLampSnapshot = smartHome.lamps
+        val firstBlindSnapshot = smartHome.blinds
+        val secondBlindSnapshot = smartHome.blinds
+        val firstAirConditionerSnapshot = smartHome.airConditioners
+        val secondAirConditionerSnapshot = smartHome.airConditioners
 
         assertNotSame(firstLampSnapshot, secondLampSnapshot)
         assertNotSame(firstBlindSnapshot, secondBlindSnapshot)
@@ -97,7 +97,7 @@ class SmartHomeTest {
 
     @Test
     fun testAbrirPersianasCallsAllBlinds() {
-        SmartHome(blinds = listOf(blind1, blind2)).abrirPersianas()
+        SmartHome(persianas = listOf(blind1, blind2)).abrirPersianas()
 
         verify(exactly = 1) { blind1.abrir() }
         verify(exactly = 1) { blind2.abrir() }
@@ -106,7 +106,7 @@ class SmartHomeTest {
 
     @Test
     fun testFecharPersianasCallsAllBlinds() {
-        SmartHome(blinds = listOf(blind1, blind2)).fecharPersianas()
+        SmartHome(persianas = listOf(blind1, blind2)).fecharPersianas()
 
         verify(exactly = 1) { blind1.fechar() }
         verify(exactly = 1) { blind2.fechar() }
@@ -115,7 +115,7 @@ class SmartHomeTest {
 
     @Test
     fun testLigarArCondicionadosCallsAllAirConditioners() {
-        SmartHome(airConditioners = listOf(airConditioner1, airConditioner2)).ligarArCondicionados()
+        SmartHome(arCondicionados = listOf(airConditioner1, airConditioner2)).ligarArCondicionados()
 
         verify(exactly = 1) { airConditioner1.ligar() }
         verify(exactly = 1) { airConditioner2.ligar() }
@@ -124,7 +124,7 @@ class SmartHomeTest {
 
     @Test
     fun testDesligarArCondicionadosCallsAllAirConditioners() {
-        SmartHome(airConditioners = listOf(airConditioner1, airConditioner2)).desligarArCondicionados()
+        SmartHome(arCondicionados = listOf(airConditioner1, airConditioner2)).desligarArCondicionados()
 
         verify(exactly = 1) { airConditioner1.desligar() }
         verify(exactly = 1) { airConditioner2.desligar() }
@@ -133,7 +133,7 @@ class SmartHomeTest {
 
     @Test
     fun testAumentarTemperaturaArCondicionadosCallsAllAirConditioners() {
-        SmartHome(airConditioners = listOf(airConditioner1, airConditioner2)).aumentarTemperaturaArCondicionados()
+        SmartHome(arCondicionados = listOf(airConditioner1, airConditioner2)).aumentarTemperaturaArCondicionados()
 
         verify(exactly = 1) { airConditioner1.aumentarTemperatura() }
         verify(exactly = 1) { airConditioner2.aumentarTemperatura() }
@@ -142,7 +142,7 @@ class SmartHomeTest {
 
     @Test
     fun testDiminuirTemperaturaArCondicionadosCallsAllAirConditioners() {
-        SmartHome(airConditioners = listOf(airConditioner1, airConditioner2)).diminuirTemperaturaArCondicionados()
+        SmartHome(arCondicionados = listOf(airConditioner1, airConditioner2)).diminuirTemperaturaArCondicionados()
 
         verify(exactly = 1) { airConditioner1.diminuirTemperatura() }
         verify(exactly = 1) { airConditioner2.diminuirTemperatura() }
@@ -151,7 +151,7 @@ class SmartHomeTest {
 
     @Test
     fun testDefinirTemperaturaArCondicionadosCallsAllAirConditionersWithGivenTemperature() {
-        SmartHome(airConditioners = listOf(airConditioner1, airConditioner2)).definirTemperaturaArCondicionados(25)
+        SmartHome(arCondicionados = listOf(airConditioner1, airConditioner2)).definirTemperaturaArCondicionados(25)
 
         verify(exactly = 1) { airConditioner1.definirTemperatura(25) }
         verify(exactly = 1) { airConditioner2.definirTemperatura(25) }
@@ -161,9 +161,9 @@ class SmartHomeTest {
     @Test
     fun testModoSonoExecutesExpectedSequence() {
         val smartHome = SmartHome(
-            lamps = listOf(lamp1, lamp2),
-            blinds = listOf(blind1, blind2),
-            airConditioners = listOf(airConditioner1, airConditioner2)
+            lampadas = listOf(lamp1, lamp2),
+            persianas = listOf(blind1, blind2),
+            arCondicionados = listOf(airConditioner1, airConditioner2)
         )
 
         smartHome.modoSono()
@@ -181,9 +181,9 @@ class SmartHomeTest {
     @Test
     fun testModoTrabalhoExecutesExpectedSequence() {
         val smartHome = SmartHome(
-            lamps = listOf(lamp1, lamp2),
-            blinds = listOf(blind1, blind2),
-            airConditioners = listOf(airConditioner1, airConditioner2)
+            lampadas = listOf(lamp1, lamp2),
+            persianas = listOf(blind1, blind2),
+            arCondicionados = listOf(airConditioner1, airConditioner2)
         )
 
         smartHome.modoTrabalho()

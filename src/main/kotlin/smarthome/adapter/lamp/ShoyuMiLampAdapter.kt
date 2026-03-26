@@ -14,7 +14,7 @@ class ShoyuMiLampAdapter(
         lamp.desligar()
     }
 
-    override fun isOn(): Boolean {
+    override fun estaLigada(): Boolean {
         return lamp.estaLigada()
     }
 }

@@ -11,26 +11,7 @@ class SolariusBlindAdapterTest {
     fun testBlindStartsOpen() {
         val adapter = SolariusBlindAdapter(PersianaSolarius())
 
-        assertTrue(adapter.isOpen())
-    }
-
-    @Test
-    fun testDescerPersianaClosesBlind() {
-        val adapter = SolariusBlindAdapter(PersianaSolarius())
-
-        adapter.descerPersiana()
-
-        assertFalse(adapter.isOpen())
-    }
-
-    @Test
-    fun testSubirPersianaOpensBlind() {
-        val adapter = SolariusBlindAdapter(PersianaSolarius())
-        adapter.descerPersiana()
-
-        adapter.subirPersiana()
-
-        assertTrue(adapter.isOpen())
+        assertTrue(adapter.estaAberta())
     }
 
     @Test
@@ -39,7 +20,7 @@ class SolariusBlindAdapterTest {
 
         adapter.fechar()
 
-        assertFalse(adapter.isOpen())
+        assertFalse(adapter.estaAberta())
     }
 
     @Test
@@ -49,6 +30,6 @@ class SolariusBlindAdapterTest {
 
         adapter.abrir()
 
-        assertTrue(adapter.isOpen())
+        assertTrue(adapter.estaAberta())
     }
 }

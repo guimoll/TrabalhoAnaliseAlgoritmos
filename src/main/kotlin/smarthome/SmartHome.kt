@@ -5,72 +5,69 @@ import smarthome.device.Blind
 import smarthome.device.Lamp
 
 class SmartHome(
-    lamps: List<Lamp> = emptyList(),
-    blinds: List<Blind> = emptyList(),
-    airConditioners: List<AirConditioner> = emptyList()
+    lampadas: List<Lamp> = emptyList(),
+    persianas: List<Blind> = emptyList(),
+    arCondicionados: List<AirConditioner> = emptyList()
 ) {
-    private val lamps: MutableList<Lamp> = lamps.toMutableList()
-    private val blinds: MutableList<Blind> = blinds.toMutableList()
-    private val airConditioners: MutableList<AirConditioner> = airConditioners.toMutableList()
+    private val _lampadas: MutableList<Lamp> = lampadas.toMutableList()
+    private val _persianas: MutableList<Blind> = persianas.toMutableList()
+    private val _arCondicionados: MutableList<AirConditioner> = arCondicionados.toMutableList()
+
+    val lamps: List<Lamp>
+        get() = _lampadas.toList()
+
+    val blinds: List<Blind>
+        get() = _persianas.toList()
+
+    val airConditioners: List<AirConditioner>
+        get() = _arCondicionados.toList()
 
     fun addLamp(lamp: Lamp) {
-        lamps.add(lamp)
+        _lampadas.add(lamp)
     }
 
     fun addBlind(blind: Blind) {
-        blinds.add(blind)
+        _persianas.add(blind)
     }
 
     fun addAirConditioner(airConditioner: AirConditioner) {
-        airConditioners.add(airConditioner)
-    }
-
-    fun getLamps(): List<Lamp> {
-        return lamps.toList()
-    }
-
-    fun getBlinds(): List<Blind> {
-        return blinds.toList()
-    }
-
-    fun getAirConditioners(): List<AirConditioner> {
-        return airConditioners.toList()
+        _arCondicionados.add(airConditioner)
     }
 
     fun ligarLampadas() {
-        lamps.forEach { lamp -> lamp.ligar() }
+        _lampadas.forEach { lamp -> lamp.ligar() }
     }
 
     fun desligarLampadas() {
-        lamps.forEach { lamp -> lamp.desligar() }
+        _lampadas.forEach { lamp -> lamp.desligar() }
     }
 
     fun abrirPersianas() {
-        blinds.forEach { blind -> blind.abrir() }
+        _persianas.forEach { persiana -> persiana.abrir() }
     }
 
     fun fecharPersianas() {
-        blinds.forEach { blind -> blind.fechar() }
+        _persianas.forEach { persiana -> persiana.fechar() }
     }
 
     fun ligarArCondicionados() {
-        airConditioners.forEach { airConditioner -> airConditioner.ligar() }
+        _arCondicionados.forEach { arCondicionado -> arCondicionado.ligar() }
     }
 
     fun desligarArCondicionados() {
-        airConditioners.forEach { airConditioner -> airConditioner.desligar() }
+        _arCondicionados.forEach { arCondicionado -> arCondicionado.desligar() }
     }
 
     fun aumentarTemperaturaArCondicionados() {
-        airConditioners.forEach { airConditioner -> airConditioner.aumentarTemperatura() }
+        _arCondicionados.forEach { arCondicionado -> arCondicionado.aumentarTemperatura() }
     }
 
     fun diminuirTemperaturaArCondicionados() {
-        airConditioners.forEach { airConditioner -> airConditioner.diminuirTemperatura() }
+        _arCondicionados.forEach { arCondicionado -> arCondicionado.diminuirTemperatura() }
     }
 
-    fun definirTemperaturaArCondicionados(temperature: Int) {
-        airConditioners.forEach { airConditioner -> airConditioner.definirTemperatura(temperature) }
+    fun definirTemperaturaArCondicionados(temperatura: Int) {
+        _arCondicionados.forEach { arCondicionado -> arCondicionado.definirTemperatura(temperatura) }
     }
 
     fun modoSono() {
@@ -82,7 +79,11 @@ class SmartHome(
     fun modoTrabalho() {
         ligarLampadas()
         ligarArCondicionados()
-        definirTemperaturaArCondicionados(25)
+        definirTemperaturaArCondicionados(TEMPERATURA_MODO_TRABALHO)
         abrirPersianas()
+    }
+
+    companion object {
+        private const val TEMPERATURA_MODO_TRABALHO = 25
     }
 }

@@ -20,7 +20,7 @@ class PhellipesLampAdapterTest {
         adapter.definirIntensidade(intensidade)
 
         assertEquals(intensidade, lamp.intensidade)
-        assertEquals(intensidade > 0, adapter.isOn())
+        assertEquals(intensidade > 0, adapter.estaLigada())
     }
 
     @ParameterizedTest
@@ -43,7 +43,7 @@ class PhellipesLampAdapterTest {
         adapter.ligar()
 
         assertEquals(100, lamp.intensidade)
-        assertTrue(adapter.isOn())
+        assertTrue(adapter.estaLigada())
     }
 
     @Test
@@ -55,6 +55,6 @@ class PhellipesLampAdapterTest {
         adapter.desligar()
 
         assertEquals(0, lamp.intensidade)
-        assertFalse(adapter.isOn())
+        assertFalse(adapter.estaLigada())
     }
 }

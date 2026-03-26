@@ -9,9 +9,9 @@ interface AirConditioner {
 
     fun diminuirTemperatura()
 
-    fun definirTemperatura(temperature: Int)
+    fun definirTemperatura(temperatura: Int)
 
-    fun getTemperature(): Int
+    val temperatura: Int
 
-    fun isOn(): Boolean
+    fun estaLigado(): Boolean
 }

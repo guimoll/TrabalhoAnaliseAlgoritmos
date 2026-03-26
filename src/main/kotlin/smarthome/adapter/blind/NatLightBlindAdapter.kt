@@ -6,24 +6,24 @@ import smarthome.device.Blind
 class NatLightBlindAdapter(
     private val blind: PersianaNatLight
 ) : Blind {
-    fun descerPalhetas() {
+    private fun descerPalhetas() {
         blind.descerPalheta()
     }
 
-    fun subirPalhetas() {
+    private fun subirPalhetas() {
         require(blind.estaPalhetaAberta()) { "Nao e possivel subir a palheta com as palhetas fechadas" }
         if (!blind.estaPalhetaErguida()) {
             blind.subirPalheta()
         }
     }
 
-    fun abrirPalhetas() {
+    private fun abrirPalhetas() {
         if (!blind.estaPalhetaAberta()) {
             blind.abrirPalheta()
         }
     }
 
-    fun fecharPalhetas() {
+    private fun fecharPalhetas() {
         require(!blind.estaPalhetaErguida()) { "Nao e possivel fechar a palheta com a persiana erguida" }
         if (blind.estaPalhetaAberta()) {
             blind.fecharPalheta()
@@ -42,7 +42,7 @@ class NatLightBlindAdapter(
         fecharPalhetas()
     }
 
-    override fun isOpen(): Boolean {
+    override fun estaAberta(): Boolean {
         return blind.estaPalhetaAberta() && blind.estaPalhetaErguida()
     }
 }

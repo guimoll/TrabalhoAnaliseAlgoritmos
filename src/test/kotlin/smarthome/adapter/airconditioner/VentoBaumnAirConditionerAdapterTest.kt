@@ -15,8 +15,8 @@ class VentoBaumnAirConditionerAdapterTest {
     fun testAirConditionerStartsTurnedOffAtDefaultTemperature() {
         val adapter = VentoBaumnAirConditionerAdapter(ArCondicionadoVentoBaumn())
 
-        assertFalse(adapter.isOn())
-        assertEquals(24, adapter.getTemperature())
+        assertFalse(adapter.estaLigado())
+        assertEquals(24, adapter.temperatura)
     }
 
     @Test
@@ -28,8 +28,8 @@ class VentoBaumnAirConditionerAdapterTest {
 
         adapter.ligar()
 
-        assertTrue(adapter.isOn())
-        assertEquals(24, adapter.getTemperature())
+        assertTrue(adapter.estaLigado())
+        assertEquals(24, adapter.temperatura)
     }
 
     @Test
@@ -39,28 +39,28 @@ class VentoBaumnAirConditionerAdapterTest {
 
         adapter.desligar()
 
-        assertFalse(adapter.isOn())
+        assertFalse(adapter.estaLigado())
     }
 
     @ParameterizedTest
     @ValueSource(ints = [15, 16, 24, 34, 35])
-    fun testDefinirTemperaturaAcceptsSupportedValues(temperature: Int) {
+    fun testDefinirTemperaturaAcceptsSupportedValues(temperatura: Int) {
         val adapter = VentoBaumnAirConditionerAdapter(ArCondicionadoVentoBaumn())
         adapter.ligar()
 
-        adapter.definirTemperatura(temperature)
+        adapter.definirTemperatura(temperatura)
 
-        assertEquals(temperature, adapter.getTemperature())
+        assertEquals(temperatura, adapter.temperatura)
     }
 
     @ParameterizedTest
     @ValueSource(ints = [14, 36])
-    fun testDefinirTemperaturaRejectsUnsupportedValues(temperature: Int) {
+    fun testDefinirTemperaturaRejectsUnsupportedValues(temperatura: Int) {
         val adapter = VentoBaumnAirConditionerAdapter(ArCondicionadoVentoBaumn())
         adapter.ligar()
 
         val exception = assertThrows(IllegalArgumentException::class.java) {
-            adapter.definirTemperatura(temperature)
+            adapter.definirTemperatura(temperatura)
         }
 
         assertEquals("Temperatura deve ser entre 15 e 35", exception.message)
@@ -84,7 +84,7 @@ class VentoBaumnAirConditionerAdapterTest {
 
         adapter.aumentarTemperatura()
 
-        assertEquals(25, adapter.getTemperature())
+        assertEquals(25, adapter.temperatura)
     }
 
     @Test
@@ -94,6 +94,6 @@ class VentoBaumnAirConditionerAdapterTest {
 
         adapter.diminuirTemperatura()
 
-        assertEquals(23, adapter.getTemperature())
+        assertEquals(23, adapter.temperatura)
     }
 }

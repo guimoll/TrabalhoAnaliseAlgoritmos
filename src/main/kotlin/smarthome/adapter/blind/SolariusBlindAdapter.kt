@@ -6,23 +6,15 @@ import smarthome.device.Blind
 class SolariusBlindAdapter(
     private val blind: PersianaSolarius
 ) : Blind {
-    fun subirPersiana() {
+    override fun abrir() {
         blind.subirPersiana()
     }
 
-    fun descerPersiana() {
+    override fun fechar() {
         blind.descerPersiana()
     }
 
-    override fun abrir() {
-        subirPersiana()
-    }
-
-    override fun fechar() {
-        descerPersiana()
-    }
-
-    override fun isOpen(): Boolean {
+    override fun estaAberta(): Boolean {
         return blind.estaAberta()
     }
 }

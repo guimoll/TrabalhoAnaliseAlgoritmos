@@ -5,5 +5,5 @@ interface Lamp {
 
     fun desligar()
 
-    fun isOn(): Boolean
+    fun estaLigada(): Boolean
 }

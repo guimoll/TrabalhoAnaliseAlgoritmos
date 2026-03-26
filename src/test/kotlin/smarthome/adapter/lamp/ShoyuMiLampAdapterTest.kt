@@ -11,7 +11,7 @@ class ShoyuMiLampAdapterTest {
     fun testLampStartsTurnedOff() {
         val adapter = ShoyuMiLampAdapter(LampadaShoyuMi())
 
-        assertFalse(adapter.isOn())
+        assertFalse(adapter.estaLigada())
     }
 
     @Test
@@ -20,7 +20,7 @@ class ShoyuMiLampAdapterTest {
 
         adapter.ligar()
 
-        assertTrue(adapter.isOn())
+        assertTrue(adapter.estaLigada())
     }
 
     @Test
@@ -30,6 +30,6 @@ class ShoyuMiLampAdapterTest {
 
         adapter.desligar()
 
-        assertFalse(adapter.isOn())
+        assertFalse(adapter.estaLigada())
     }
 }

@@ -15,8 +15,8 @@ class GellaKazaAirConditionerAdapterTest {
     fun testAirConditionerStartsTurnedOffAtDefaultTemperature() {
         val adapter = GellaKazaAirConditionerAdapter(ArCondicionadoGellaKaza())
 
-        assertFalse(adapter.isOn())
-        assertEquals(28, adapter.getTemperature())
+        assertFalse(adapter.estaLigado())
+        assertEquals(28, adapter.temperatura)
     }
 
     @Test
@@ -28,8 +28,8 @@ class GellaKazaAirConditionerAdapterTest {
 
         adapter.ligar()
 
-        assertTrue(adapter.isOn())
-        assertEquals(28, adapter.getTemperature())
+        assertTrue(adapter.estaLigado())
+        assertEquals(28, adapter.temperatura)
     }
 
     @Test
@@ -39,7 +39,7 @@ class GellaKazaAirConditionerAdapterTest {
 
         adapter.desligar()
 
-        assertFalse(adapter.isOn())
+        assertFalse(adapter.estaLigado())
     }
 
     @Test
@@ -48,7 +48,7 @@ class GellaKazaAirConditionerAdapterTest {
 
         adapter.aumentarTemperatura()
 
-        assertEquals(29, adapter.getTemperature())
+        assertEquals(29, adapter.temperatura)
     }
 
     @Test
@@ -69,7 +69,7 @@ class GellaKazaAirConditionerAdapterTest {
 
         adapter.diminuirTemperatura()
 
-        assertEquals(27, adapter.getTemperature())
+        assertEquals(27, adapter.temperatura)
     }
 
     @Test
@@ -86,23 +86,26 @@ class GellaKazaAirConditionerAdapterTest {
 
     @ParameterizedTest
     @ValueSource(ints = [15, 16, 27, 28, 29, 34, 35])
-    fun testDefinirTemperaturaAcceptsSupportedValues(temperature: Int) {
+    fun testDefinirTemperaturaAcceptsSupportedValues(temperatura: Int) {
         val adapter = GellaKazaAirConditionerAdapter(ArCondicionadoGellaKaza())
 
-        adapter.definirTemperatura(temperature)
+        adapter.definirTemperatura(temperatura)
 
-        assertEquals(temperature, adapter.getTemperature())
+        assertEquals(temperatura, adapter.temperatura)
     }
 
     @ParameterizedTest
     @ValueSource(ints = [14, 36])
-    fun testDefinirTemperaturaRejectsUnsupportedValues(temperature: Int) {
+    fun testDefinirTemperaturaRejectsUnsupportedValues(temperatura: Int) {
         val adapter = GellaKazaAirConditionerAdapter(ArCondicionadoGellaKaza())
 
         val exception = assertThrows(IllegalArgumentException::class.java) {
-            adapter.definirTemperatura(temperature)
+            adapter.definirTemperatura(temperatura)
         }
 
-        assertEquals(if (temperature < 15) "Limite de temperatura atingido 15" else "Limite de temperatura atingido 35", exception.message)
+        assertEquals(
+            if (temperatura < 15) "Limite de temperatura atingido 15" else "Limite de temperatura atingido 35",
+            exception.message
+        )
     }
 }

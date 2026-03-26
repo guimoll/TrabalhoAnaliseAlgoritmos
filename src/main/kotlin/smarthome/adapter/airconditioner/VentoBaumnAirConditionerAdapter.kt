@@ -20,22 +20,22 @@ class VentoBaumnAirConditionerAdapter(
     }
 
     override fun aumentarTemperatura() {
-        definirTemperatura(getTemperature() + 1)
+        definirTemperatura(temperatura + 1)
     }
 
     override fun diminuirTemperatura() {
-        definirTemperatura(getTemperature() - 1)
+        definirTemperatura(temperatura - 1)
     }
 
-    override fun definirTemperatura(temperature: Int) {
-        airConditioner.definirTemperatura(temperature)
+    override fun definirTemperatura(temperatura: Int) {
+        require(ligado) { "Para definir a temperatura o aparelho deve estar ligado" }
+        airConditioner.definirTemperatura(temperatura)
     }
 
-    override fun getTemperature(): Int {
-        return airConditioner.temperatura
-    }
+    override val temperatura: Int
+        get() = airConditioner.temperatura
 
-    override fun isOn(): Boolean {
+    override fun estaLigado(): Boolean {
         return ligado
     }
 

@@ -5,5 +5,5 @@ interface Blind {
 
     fun fechar()
 
-    fun isOpen(): Boolean
+    fun estaAberta(): Boolean
 }
