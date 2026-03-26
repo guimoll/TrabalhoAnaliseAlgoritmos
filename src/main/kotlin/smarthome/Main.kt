@@ -30,11 +30,11 @@ fun main() {
     smartHome.abrirPersianas()
     smartHome.ligarArCondicionados()
 
-    phellipesLamp.setIntensidade(1)
+    phellipesLamp.definirIntensidade(1)
     println("Phellipes ligada com intensidade 1: ${phellipesLamp.isOn()}")
-    phellipesLamp.setIntensidade(4)
+    phellipesLamp.definirIntensidade(4)
     println("Phellipes ligada com intensidade 4: ${phellipesLamp.isOn()}")
-    phellipesLamp.setIntensidade(99)
+    phellipesLamp.definirIntensidade(99)
     println("Phellipes ligada com intensidade 99: ${phellipesLamp.isOn()}")
 
     solariusBlind.descerPersiana()

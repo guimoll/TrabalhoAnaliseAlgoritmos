@@ -7,16 +7,16 @@ class PhellipesLampAdapter(
     private val lamp: LampadaPhellipes
 ) : Lamp {
 
-    fun setIntensidade(intensidade: Int) {
+    fun definirIntensidade(intensidade: Int) {
         lamp.intensidade = intensidade
     }
 
     override fun ligar() {
-        setIntensidade(MAX_INTENSITY)
+        definirIntensidade(MAX_INTENSITY)
     }
 
     override fun desligar() {
-        setIntensidade(MIN_INTENSITY)
+        definirIntensidade(MIN_INTENSITY)
     }
 
     override fun isOn(): Boolean {
